@@ -1,6 +1,3 @@
-import { addRecipe } from '../actions/index.js'
-import {getForms} from "../index.js"
-
 let initialState = [{
   "title": "Grilled Cheese Sandwiches",
   "ingredients": "4 slices white bread; 3 tablespoons butter, divided; 2 slices Cheddar cheese",
