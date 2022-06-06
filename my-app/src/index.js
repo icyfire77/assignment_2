@@ -9,9 +9,13 @@ import { configureStore } from '@reduxjs/toolkit';
 const store = configureStore({reducer: rootReducer});
 
 function checkStore() {
-   // console.log(store.getState().updateRecipes);
+   //console.log(store.getState().updateForms);
 }
 setInterval(checkStore, 500);
+
+export function getForms() {
+  return store.getState().updateForms;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

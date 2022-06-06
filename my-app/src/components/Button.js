@@ -1,46 +1,27 @@
-import React, {useRef} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import { addRecipe, changeInputValue } from '../actions/index.js'
-// uses code from following sources:
-// https://stackoverflow.com/questions/69769443/getting-text-input-value-with-redux-in-a-react-app
+import { addRecipe, delRecipe } from '../actions/index.js'
+import {getForms} from "../index.js"
 
-export default function Button(mapStateToProps) {
+// partially taken from
+// https://atomizedobjects.com/blog/react/how-to-render-an-array-of-objects-with-map-in-react/#:~:text=To%20render%20an%20array%20of%20objects%20in%20react%20with%20JSX,Instead%2C%20by%20using%20Array.
+
+export default function Button(recipeList) {
+  const dynamicRecipes = useSelector(state => state.updateRecipes);
 
     const dispatch = useDispatch()
 
-    const inputValue = useSelector(state => state.value)
-
-    const handleChange = (e) => {
-      dispatch({type: "CHANGE_INPUT_VALUE",
-        payload: [e.target.name, e.target.value] })
-    }
-
   return (
     <div>
-      <div>
-        <input type='text'/>
-      </div>
-      <p id="afterRecipe" className="generalText">Add your own recipe below:</p>
-        <div className="center">
-          <textarea className="boxes" name="title" value={inputValue} onChange={handleChange}
-            rows="1" cols="80"
-            placeholder="Add your recipe title here!">
-            </textarea>
-        </div>
-        <div className="center">
-          <textarea className="boxes" name="ingredients" value={inputValue} onChange={handleChange}
-            rows="8" cols="80"
-            placeholder="Add your recipe ingredients here">
-          </textarea>
-        </div>
-        <div className="center">
-          <textarea className="boxes" name="instructions" value={inputValue} onChange={handleChange}
-            rows="12" cols="80"
-            placeholder="Add your recipe instructions here">
-          </textarea>
-        </div>
-      <button onClick={() => dispatch(addRecipe(inputValue))}>Add Recipe!</button>
-      <p>test{inputValue}</p>
+      {console.log(dynamicRecipes)}
+      {dynamicRecipes.map(({ title, ingredients, instructions }) => (
+        <>
+        <h3 key={title}>{title}</h3>
+        <h5 key={ingredients}>{ingredients}</h5>
+        <h5 key={instructions}>{instructions}</h5>
+        </>
+      ))}
+      <button onClick={() => dispatch(addRecipe([getForms()]))}>Add Recipe!</button>
+      <button onClick={() => dispatch(delRecipe())}>Delete Recipes</button>
     </div>
   );
 }
