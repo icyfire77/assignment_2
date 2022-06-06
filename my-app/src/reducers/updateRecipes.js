@@ -7,9 +7,9 @@ let initialState = [{
 const updateRecipes = (state = initialState, action) => {
 	switch(action.type) {
         case "ADD_RECIPE":
-          console.log(action.payload[0]);
+          // console.log(action.payload[0]);
           let clonedState = JSON.parse(JSON.stringify(state));
-          console.log(clonedState);
+          // console.log(clonedState);
           clonedState.push(action.payload[0]);
           return clonedState;
         case "DEL_RECIPE":

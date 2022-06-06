@@ -30,7 +30,7 @@ function reworkStructure(recipeObject) {
 
 function addRecipe() {
   let currentInputs = getForms();
-  console.log(currentInputs);
+  // console.log(currentInputs);
   // objectMap(currentInputs, reworkStructure)
 
   /*
