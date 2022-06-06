@@ -43,7 +43,7 @@ function addRecipe() {
   */
 
   recipeState.push(currentInputs);
-  console.log(recipeState)
+  // console.log(recipeState)
 }
 
 function deleteRecipes() {
