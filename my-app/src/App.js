@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Forms from "./components/Forms";
 import Button from "./components/Button";
+import Recipes from "./components/Recipes";
 import {getForms} from "./index.js"
 
 let initialRecipe = {
@@ -56,8 +57,6 @@ let renderedRecipes = recipeState.map(item =>
 )
 
 function App() {
-
-
   return (
     <div className="App">
       <header className="App-header">
