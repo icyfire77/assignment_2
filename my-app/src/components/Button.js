@@ -13,7 +13,6 @@ export default function Button(recipeList) {
 
   return (
     <div>
-      {/*console.log(dynamicRecipes)*/}
       {dynamicRecipes.map(({ title, ingredients, instructions }) => (
         <>
         <h3 key={title}>{title}</h3>
