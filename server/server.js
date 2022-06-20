@@ -1,6 +1,11 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const port = 3001
+
+app.use(cors());
+app.use(bodyParser.json());
 
 let initialRecipe = [{
   "title": "Grilled Cheese Sandwiches",
@@ -16,10 +21,10 @@ app.get('/recipes', (req, res) => {
 })
 
 app.post('/recipes', function(req, res) {
-    let addedRecipe = req.body;
-    console.log(addedRecipe);
-    initialRecipe.push(addedRecipe);
-    res.send("Recipe added!");
+  let addedRecipe = req.body;
+  console.log(addedRecipe);
+  initialRecipe.push(addedRecipe);
+  res.send("Recipe added!");
 });
 
 app.get('/', (req, res) => {
