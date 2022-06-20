@@ -19,7 +19,6 @@ export default function Recipes({instructions}) {
       <div>
         <button
           style={{
-            // float: "right", changed mind about this one, doesn't look nice
             position: "relative",
           }}
           onClick={() => {

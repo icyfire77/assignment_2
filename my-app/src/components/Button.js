@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import { addRecipe, delRecipe } from '../actions/index.js'
+import { addRecipe, delRecipes } from '../actions/index.js'
 import {getForms} from "../index.js"
 import MoreInfo from "./MoreInfo.js"
 
@@ -9,7 +9,7 @@ import MoreInfo from "./MoreInfo.js"
 export default function Button(recipeList) {
   const dynamicRecipes = useSelector(state => state.updateRecipes);
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -24,7 +24,7 @@ export default function Button(recipeList) {
         </>
       ))}
       <button onClick={() => dispatch(addRecipe([getForms()]))}>Add Recipe!</button>
-      <button onClick={() => dispatch(delRecipe())}>Delete Recipes</button>
+      <button onClick={() => dispatch(delRecipes())}>Delete Recipes</button>
     </div>
   );
 }

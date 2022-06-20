@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import Forms from "./components/Forms";
 import Button from "./components/Button";
-import Recipes from "./components/Recipes";
 import {getForms} from "./index.js"
 
 let initialRecipe = {
