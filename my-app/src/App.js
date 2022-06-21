@@ -24,7 +24,7 @@ const recipePromise = () => {
 
 export const recipeRequest = () => {
   recipePromise().then((data) => {
-    console.log(data)
+    // console.log(data)
     return data;
   });
 };
@@ -80,7 +80,6 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
           <div>
-          <>{console.log(recipeState)}</>
           {/*
             <Recipes
             recipeList = {recipeState}/>
@@ -93,6 +92,7 @@ function App() {
               recipeList = {recipeRequest()}
             />
             <Recipes/>
+            <AsyncRecipeList/>
             {/*<button onClick={addRecipe}>Add Recipe!</button>*/}
           </div>
       </header>

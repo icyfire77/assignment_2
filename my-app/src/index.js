@@ -11,9 +11,9 @@ const store = configureStore({
 });
 
 function checkStore() {
-   //console.log(store.getState().updateForms);
+   // console.log(store.getState().recipesSlice);
 }
-setInterval(checkStore, 500);
+setInterval(checkStore, 5000);
 
 export function getForms() {
   return store.getState().updateForms;

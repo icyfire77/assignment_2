@@ -30,10 +30,6 @@ export default function Recipes({instructions}) {
         {isVisible && (
           <h6>{instructions}</h6>
         )}
-        <br/>
-        <br/>
-        <br/>
-        <br/>
       </div>
     );
 }

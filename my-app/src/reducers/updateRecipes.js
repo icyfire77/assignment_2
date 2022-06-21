@@ -6,10 +6,6 @@ const updateRecipes = (state = [], action) => {
         case "ADD_RECIPE":
           // console.log(action.payload[0]);
           let clonedState = JSON.parse(JSON.stringify(state));
-
-					console.log(action.payload);
-
-          // console.log(clonedState);
           clonedState.push(action.payload[0]);
           fetch('http://localhost:3001/recipes', {
             method: 'POST',
@@ -23,6 +19,17 @@ const updateRecipes = (state = [], action) => {
         case "DEL_RECIPE":
           let freshState = [];
           return freshState;
+				case "DEL_ONE":
+					fetch('http://localhost:3001/recipes', {
+						method: 'DELETE',
+						headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+						body: action.payload
+					});
+					console.log(action.payload);
+					return state;
 		default:
 			return state;
 	}

@@ -1,29 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { actionTypes } from './actionTypes';
-import UserService from './service';
+// import { actionTypes } from './actionTypes';
+import {getRecipe, addRecipe, delRecipe} from './service';
 
 export const getRecipesAsync = createAsyncThunk(
-  actionTypes.GET_RECIPES,
+  'recipes/getRecipes',
   async () => {
-    return await UserService.getUsers();
+    return await getRecipe();
   }
 );
 
-const usersSlice = createSlice({
-    name: 'usersSlice',
-    initialState,
-    extraReducers: {
-      [getUsers.pending] = (state) => {
-        state.status = 'Pending';
-      },
+export const addRecipeAsync = createAsyncThunk(
+  'recipes/addRecipe',
+  async (recipe) => {
+    return await addRecipe(recipe);
+  }
+);
 
-      [getUsers.fulfilled] = (state, action) => {
-        state.status = 'Fulfilled';
-        state.data = action.payload;
-      },
-
-      [getUsers.rejected] = (state) => {
-        state.status = 'Rejected';
-      }
-    }
-})
+export const deleteRecipeAsync = createAsyncThunk(
+  'recipes/delRecipe',
+  async (title) => {
+    return await delRecipe(title);
+  }
+);

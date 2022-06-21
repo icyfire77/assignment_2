@@ -16,15 +16,24 @@ let initialRecipe = [{
 // baseline taken from https://rapidapi.com/blog/create-react-app-express/
 
 app.get('/recipes', (req, res) => {
-  console.log("reached GET recipes")
+  // console.log("reached GET recipes")
   res.send(initialRecipe)
 })
 
 app.post('/recipes', function(req, res) {
   let addedRecipe = req.body;
-  console.log(addedRecipe);
+  // console.log(addedRecipe);
   initialRecipe.push(addedRecipe);
-  res.send("Recipe added!");
+  res.send(addedRecipe);
+});
+
+app.delete('/recipes', function(req, res) {
+  // console.log(req.body);
+  let recipeToDelete = req.body;
+  initialRecipe = initialRecipe.filter(function(jsonObject) {
+    return jsonObject.title != recipeToDelete.title;
+  });
+  return res.send(recipeToDelete);
 });
 
 app.get('/', (req, res) => {
