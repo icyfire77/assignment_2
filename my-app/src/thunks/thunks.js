@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { actionTypes } from './actionTypes';
-import {getRecipe, addRecipe, delRecipe} from './service';
+import {getRecipe, addRecipe, delRecipe, editRecipe} from './service';
 
 export const getRecipesAsync = createAsyncThunk(
   'recipes/getRecipes',
@@ -20,5 +20,12 @@ export const deleteRecipeAsync = createAsyncThunk(
   'recipes/delRecipe',
   async (title) => {
     return await delRecipe(title);
+  }
+);
+
+export const editRecipeAsync = createAsyncThunk(
+  'recipes/editRecipe',
+  async (edited) => {
+    return await editRecipe(edited);
   }
 );

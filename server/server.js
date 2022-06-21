@@ -36,6 +36,17 @@ app.delete('/recipes', function(req, res) {
   return res.send(recipeToDelete);
 });
 
+app.put('/recipes', function(req, res) {
+  console.log(req.body);
+  /*
+  let recipeToDelete = req.body;
+  initialRecipe = initialRecipe.filter(function(jsonObject) {
+    return jsonObject.title != recipeToDelete.title;
+  });
+  return res.send(recipeToDelete);
+  */
+});
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

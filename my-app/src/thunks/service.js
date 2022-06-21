@@ -41,3 +41,21 @@ export const delRecipe = async (title) => {
 
   return data;
 };
+
+export const editRecipe = async (recipe) => {
+  const response = await fetch('http://localhost:3001/recipes', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recipe)
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    const errorMsg = data?.message;
+    throw new Error(errorMsg)
+  }
+
+  return data;
+};

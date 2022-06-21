@@ -2,15 +2,18 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 // import { fetchRecipes } from "../actions/index.js";
 import { useEffect } from 'react';
-import { getRecipesAsync, deleteRecipeAsync } from '../thunks/thunks.js';
+import { getRecipesAsync, deleteRecipeAsync, editRecipeAsync } from '../thunks/thunks.js';
 import MoreInfo from "./MoreInfo.js"
-import { recipeCaller, addRecipe, delRecipes, deleteOne } from '../actions/index.js'
+import { recipeCaller, addRecipe, delRecipes } from '../actions/index.js'
+import {getForms} from "../index.js"
 
 export default function AsyncRecipeList() {
 
   const recipes = useSelector(state => state.recipesSlice.list);
 
   const dispatch = useDispatch();
+
+  let forms = getForms();
 
   useEffect(() => {
     dispatch(getRecipesAsync());
@@ -27,6 +30,8 @@ export default function AsyncRecipeList() {
         />
         <button key="deleteOne"
         onClick={() => dispatch(deleteRecipeAsync({"title": title}))}>Delete Current Recipe</button>
+        <button key="editOne"
+        onClick={() => dispatch(editRecipeAsync({"new": forms}, {"old": recipes}))}>Edit Current Recipe</button>
         </>
       ))}
       <br/>
