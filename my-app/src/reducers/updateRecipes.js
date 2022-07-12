@@ -1,5 +1,5 @@
-import {recipeCaller} from "../actions/index"
-import {recipeRequest} from "../App"
+// import {recipeCaller} from "../actions/index"
+// import {recipeRequest} from "../App"
 
 const updateRecipes = (state = [], action) => {
 	switch(action.type) {

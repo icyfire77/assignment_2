@@ -13,8 +13,6 @@ export default function AsyncRecipeList() {
 
   const dispatch = useDispatch();
 
-  let forms = getForms();
-
   useEffect(() => {
     dispatch(getRecipesAsync());
   }, []);
@@ -31,7 +29,7 @@ export default function AsyncRecipeList() {
         <button key="deleteOne"
         onClick={() => dispatch(deleteRecipeAsync({"_id": _id}))}>Delete Current Recipe</button>
         <button key="editOne"
-        onClick={() => dispatch(editRecipeAsync({"new": forms}, {"old": recipes}))}>Edit Current Recipe</button>
+        onClick={() => dispatch(editRecipeAsync({"new": getForms(), "old": _id}))}>Edit Current Recipe</button>
         </>
       ))}
       <br/>

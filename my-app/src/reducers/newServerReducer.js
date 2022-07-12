@@ -48,7 +48,7 @@ const recipesSlice = createSlice({
       .addCase(deleteRecipeAsync.fulfilled, (state, action) => {
         state.addRecipe = REQUEST_STATE.FULFILLED;
         state.list = state.list.filter(function(jsonObject) {
-          return jsonObject._id != action.payload._id;
+          return jsonObject._id !== action.payload._id;
         });
       })
       .addCase(deleteRecipeAsync.rejected, (state, action) => {
@@ -63,9 +63,13 @@ const recipesSlice = createSlice({
       .addCase(editRecipeAsync.fulfilled, (state, action) => {
         state.addRecipe = REQUEST_STATE.FULFILLED;
         console.log(action.payload);
-        state.list = state.list.filter(function(jsonObject) {
-          return jsonObject.title != action.payload.title;
-        });
+        for (const jsonObject of state.list) {
+          if (jsonObject._id === action.payload.old) {
+            jsonObject.title = action.payload.new.title
+            jsonObject.ingredients = action.payload.new.ingredients
+            jsonObject.instructions = action.payload.new.instructions
+          }
+        }
       })
       .addCase(editRecipeAsync.rejected, (state, action) => {
         state.addRecipe = REQUEST_STATE.REJECTED;

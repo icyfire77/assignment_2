@@ -64,7 +64,19 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
     });
 
     app.put('/recipes', function(req, res) {
-      console.log(req.body);
+      // console.log(req.body.new); // new fields after edit
+      // console.log(req.body.old); // mongodb id of old field
+      const _id = new ObjectID(req.body.old);
+      recipeCollection.update({_id: _id},
+        {$set : {
+          title: req.body.new.title,
+          ingredients: req.body.new.ingredients,
+          instructions: req.body.new.instructions
+          }
+        }).then(result => {
+          return res.send(req.body);
+        })
+        .catch(error => console.error(error));
       /*
       let recipeToDelete = req.body;
       initialRecipe = initialRecipe.filter(function(jsonObject) {

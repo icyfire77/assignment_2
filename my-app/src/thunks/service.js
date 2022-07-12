@@ -43,7 +43,6 @@ export const delRecipe = async (title) => {
 };
 
 export const editRecipe = async (recipe) => {
-  console.log(recipe);
   const response = await fetch('http://localhost:3001/recipes', {
     method: 'PUT',
     headers: {
