@@ -24,6 +24,12 @@ export default function Forms() {
             </textarea>
         </div>
         <div className="center">
+          <textarea className="boxes" name="duration" value={inputValue} onChange={handleChange}
+            rows="1" cols="80"
+            placeholder="Add recipe duration here">
+            </textarea>
+        </div>
+        <div className="center">
           <textarea className="boxes" name="ingredients" value={inputValue} onChange={handleChange}
             rows="8" cols="80"
             placeholder="Add your recipe ingredients here">

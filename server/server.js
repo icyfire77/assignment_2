@@ -11,13 +11,6 @@ const MongoClient = require('mongodb').MongoClient;
 
 var ObjectID = require('mongodb').ObjectID;
 
-let initialRecipe = [{
-  "title": "Grilled Cheese Sandwiches",
-  "ingredients": "4 slices white bread; 3 tablespoons butter, divided; 2 slices Cheddar cheese",
-  "instructions": "Preheat skillet over medium heat. Generously butter one side of a slice of bread. Place bread butter-side-down onto skillet bottom and add 1 slice of cheese. Butter a second slice of bread on one side and place butter-side-up on top of sandwich. Grill until lightly browned and flip over; continue grilling until cheese is melted. Repeat with remaining 2 slices of bread, butter and slice of cheese."
-}]
-
-
 MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvta.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
@@ -36,7 +29,6 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
     app.post('/recipes', function(req, res) {
       let addedRecipe = req.body;
       // console.log(addedRecipe);
-      // initialRecipe.push(addedRecipe);
       recipeCollection.insertOne(addedRecipe);
       res.send(addedRecipe);
     });
@@ -54,36 +46,24 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
         // console.log("result: " + result);
         return res.send(recipeToDelete);
       })
-      .catch(error => console.error(error))
-      /*
-      initialRecipe = initialRecipe.filter(function(jsonObject) {
-        return jsonObject.title != recipeToDelete.title;
-      });
-      return res.send(recipeToDelete);
-      */
+      .catch(error => console.error(error));
     });
 
     app.put('/recipes', function(req, res) {
-      // console.log(req.body.new); // new fields after edit
+      console.log(req.body.new); // new fields after edit
       // console.log(req.body.old); // mongodb id of old field
       const _id = new ObjectID(req.body.old);
       recipeCollection.update({_id: _id},
         {$set : {
           title: req.body.new.title,
           ingredients: req.body.new.ingredients,
+          duration: req.body.new.duration,
           instructions: req.body.new.instructions
           }
         }).then(result => {
           return res.send(req.body);
         })
         .catch(error => console.error(error));
-      /*
-      let recipeToDelete = req.body;
-      initialRecipe = initialRecipe.filter(function(jsonObject) {
-        return jsonObject.title != recipeToDelete.title;
-      });
-      return res.send(recipeToDelete);
-      */
     });
   })
   .catch(error => console.error(error))

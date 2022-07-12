@@ -65,9 +65,10 @@ const recipesSlice = createSlice({
         console.log(action.payload);
         for (const jsonObject of state.list) {
           if (jsonObject._id === action.payload.old) {
-            jsonObject.title = action.payload.new.title
-            jsonObject.ingredients = action.payload.new.ingredients
-            jsonObject.instructions = action.payload.new.instructions
+            jsonObject.title = action.payload.new.title;
+            jsonObject.ingredients = action.payload.new.ingredients;
+            jsonObject.duration = action.payload.new.duration;
+            jsonObject.instructions = action.payload.new.instructions;
           }
         }
       })

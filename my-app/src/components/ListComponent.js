@@ -19,10 +19,11 @@ export default function AsyncRecipeList() {
 
   return (
     <div>
-      {recipes.map(({ _id, title, ingredients, instructions }) => (
+      {recipes.map(({ _id, title, ingredients, duration, instructions }) => (
         <>
         <h3 key={title}>{title}</h3>
         <h5 key={ingredients}>{ingredients}</h5>
+        <p key={duration}>{duration}</p>
         <MoreInfo
           instructions = {instructions}
         />
