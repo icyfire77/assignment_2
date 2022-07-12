@@ -1,3 +1,4 @@
+// TODO: add creator parameter to below initialRecipe structure
 
 let initialRecipe = JSON.stringify(
 {

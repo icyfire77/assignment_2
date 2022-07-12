@@ -26,6 +26,7 @@ export const deleteRecipeAsync = createAsyncThunk(
 export const editRecipeAsync = createAsyncThunk(
   'recipes/editRecipe',
   async (edited) => {
+    console.log(edited);
     return await editRecipe(edited);
   }
 );

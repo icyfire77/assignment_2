@@ -21,7 +21,7 @@ export default function AsyncRecipeList() {
 
   return (
     <div>
-      {recipes.map(({ title, ingredients, instructions }) => (
+      {recipes.map(({ _id, title, ingredients, instructions }) => (
         <>
         <h3 key={title}>{title}</h3>
         <h5 key={ingredients}>{ingredients}</h5>
@@ -29,7 +29,7 @@ export default function AsyncRecipeList() {
           instructions = {instructions}
         />
         <button key="deleteOne"
-        onClick={() => dispatch(deleteRecipeAsync({"title": title}))}>Delete Current Recipe</button>
+        onClick={() => dispatch(deleteRecipeAsync({"_id": _id}))}>Delete Current Recipe</button>
         <button key="editOne"
         onClick={() => dispatch(editRecipeAsync({"new": forms}, {"old": recipes}))}>Edit Current Recipe</button>
         </>
