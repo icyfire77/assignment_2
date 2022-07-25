@@ -19,7 +19,6 @@ export default function Recipes({instructions}) {
       <div>
         <button
           style={{
-            // float: "right", changed mind about this one, doesn't look nice
             position: "relative",
           }}
           onClick={() => {
@@ -31,10 +30,6 @@ export default function Recipes({instructions}) {
         {isVisible && (
           <h6>{instructions}</h6>
         )}
-        <br/>
-        <br/>
-        <br/>
-        <br/>
       </div>
     );
 }
