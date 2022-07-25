@@ -70,7 +70,7 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
 
 // baseline taken from https://rapidapi.com/blog/create-react-app-express/
 
-app.use("/", routes);
+// app.use("/", routes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/my-app/build")));
