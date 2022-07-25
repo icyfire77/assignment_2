@@ -7,9 +7,6 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '../my-app/build')))
-
 const MongoClient = require('mongodb').MongoClient;
 
 var ObjectID = require('mongodb').ObjectID;
@@ -73,10 +70,16 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
 
 // baseline taken from https://rapidapi.com/blog/create-react-app-express/
 
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../my-app/build/index.html'))
-})
+app.use("/", routes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/my-app/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "my-app", "build", "index.html"));
+  });
+}
+
 /*
 app.get('/', (req, res) => {
   res.send('Hello World!')
