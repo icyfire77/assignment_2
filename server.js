@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3001;
+const path = require("path");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -70,8 +71,8 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
 
 // baseline taken from https://rapidapi.com/blog/create-react-app-express/
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/build/index.html');
+app.get("/", (req, res) => {
+ res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 /*
