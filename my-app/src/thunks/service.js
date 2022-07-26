@@ -1,5 +1,5 @@
 export const addRecipe = async (recipe) => {
-  const response = await fetch('http://localhost:3001/recipes', {
+  const response = await fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -17,14 +17,14 @@ export const addRecipe = async (recipe) => {
 };
 
 export const getRecipe = async () => {
-  const response = await fetch('http://localhost:3001/recipes', {
+  const response = await fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
     method: 'GET'
   });
   return response.json();
 };
 
 export const delRecipe = async (title) => {
-  const response = await fetch('http://localhost:3001/recipes', {
+  const response = await fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
