@@ -7,7 +7,7 @@ const updateRecipes = (state = [], action) => {
           // console.log(action.payload[0]);
           let clonedState = JSON.parse(JSON.stringify(state));
           clonedState.push(action.payload[0]);
-          fetch('http://localhost:3001/recipes', {
+          fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
@@ -20,7 +20,7 @@ const updateRecipes = (state = [], action) => {
           let freshState = [];
           return freshState;
 				case "DEL_ONE":
-					fetch('http://localhost:3001/recipes', {
+					fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
 						method: 'DELETE',
 						headers: {
               'Accept': 'application/json',

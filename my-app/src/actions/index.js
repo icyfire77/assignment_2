@@ -4,7 +4,7 @@ export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
 // https://daveceddia.com/where-fetch-data-redux/
 
 export function recipeCaller() {
-		fetch('http://localhost:3001/recipes')
+		fetch('https://dry-everglades-42811.herokuapp.com/recipes')
 	  .then(response => response.json())
 	  .then((data) => {
 			console.log(data);
@@ -15,7 +15,7 @@ export function recipeCaller() {
 export function fetchRecipes() {
   return dispatch => {
     dispatch(fetchRecipesBegin());
-    return fetch("http://localhost:3001/recipes")
+    return fetch("https://dry-everglades-42811.herokuapp.com/recipes")
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

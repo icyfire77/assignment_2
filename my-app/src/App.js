@@ -15,7 +15,7 @@ let initialRecipe = {
 }
 
 const recipePromise = () => {
-  const requested = fetch('http://localhost:3001/recipes')
+  const requested = fetch('https://dry-everglades-42811.herokuapp.com/recipes')
       .then(result => result.json())
       .then(data => {
         return data;
