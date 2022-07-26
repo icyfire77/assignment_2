@@ -71,7 +71,7 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lwvt
 // baseline taken from https://rapidapi.com/blog/create-react-app-express/
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/build/index.html');
 });
 
 /*
