@@ -1,5 +1,5 @@
 {
-  "name": "react16-redux-button-counter",
+  "name": "recipeapp",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
