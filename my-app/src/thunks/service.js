@@ -43,7 +43,7 @@ export const delRecipe = async (title) => {
 };
 
 export const editRecipe = async (recipe) => {
-  const response = await fetch('http://localhost:3001/recipes', {
+  const response = await fetch('https://dry-everglades-42811.herokuapp.com/recipes', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
